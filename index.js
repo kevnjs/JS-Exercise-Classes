@@ -104,9 +104,9 @@ class Car {
 
 
 
-const newCar = new Car('honda', 10);
-console.log(newCar.fill(10))
-console.log(newCar.drive(50));
+// const newCar = new Car('honda', 10);
+// console.log(newCar.fill(10))
+// console.log(newCar.drive(50));
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -157,6 +157,10 @@ class Instructor extends Lambdasian{
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`
   }
+  points(studObj) {
+    let points = Math.floor(Math.random() * 101)
+    return studObj.grade = points;
+  }
 }
 /*
   TASK 5
@@ -179,6 +183,7 @@ class Student extends Lambdasian{
     this.previousBackground = attributes.previousBackground;
     this.className = attributes.className;
     this.favSubjects = attributes.favSubjects;
+    this.grade = 50;
    }
    listSubjects() {
     return "Loving " + this.favSubjects.join(', ') + '!';
@@ -188,6 +193,13 @@ class Student extends Lambdasian{
    }
    sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}` 
+   }
+   graduate() {
+     if (this.grade > 70) {
+       return 'Congrats you passed!'
+     } else {
+       return "Sorry you didn't pass"
+     }
    }
 }
 
@@ -225,7 +237,26 @@ class ProjectManager extends Instructor{
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
+const student1 = new Student({
+  name: "Bob",
+  age: 25,
+  location: 'Another World',
+  previousBackground: 'Peasant',
+  favSubjects: ['HTML', 'CSS', 'JS']
+})
 
+const teacher = new Instructor({
+    name: 'Sensei',
+    age: 30,
+    location: 'Another Dimension',
+    specialty: 'redux',
+    favLanguage: 'JavaScript',
+    catchPhrase: 'dattebayo'
+  })
+
+teacher.points(student1);
+console.log(student1.grade);
+console.log(student1.graduate());
 
 //End of Challenge
 /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
