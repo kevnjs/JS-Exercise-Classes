@@ -91,10 +91,13 @@ class Car {
     let mpg = distance / this.milesPerGallon;
     let distanceLimit = this.tank * this.milesPerGallon;
     if (this.tank > 0 && distance < distanceLimit) {
-      this.odometer += distance;
+      this.odometer+= distance;
       this.tank -= mpg;
+    } else if (this.tank > 0 && distance > distanceLimit) {
+      this.odometer += distanceLimit;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer}`;
     }
-    
   }
 }
 
